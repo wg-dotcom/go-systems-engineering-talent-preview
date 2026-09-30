@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="An anonymized preview of engineers with Go and non-cloud systems experience.">
+  <title>Go &amp; Systems Engineering Talent | Sagan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#f5f2ed;--paper:#fffdf9;--glacier:#093a3e;--muted:#5e6c69;--line:#d8d4cc;--yellow:#f5b800;--blue:#2197ff;--soft:#e9efeb}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--glacier);font-family:"Space Grotesk",Arial,sans-serif;line-height:1.5}
+    .shell{width:min(1160px,calc(100% - 40px));margin:auto}
+    .topbar{border-bottom:1px solid var(--line);background:var(--cream)}
+    .topbar .shell{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--glacier);font-family:"Plus Jakarta Sans",sans-serif;font-size:22px;font-weight:800}
+    .brand-mark{width:34px;height:34px;border:3px solid var(--glacier);border-radius:50%;position:relative;flex:none}
+    .brand-mark:after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--blue)}
+    .top-note,.eyebrow,.tag,.small-label{font-family:"Fragment Mono",monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase}
+    .top-note{color:var(--muted)}
+    .hero{padding:82px 0 68px;border-bottom:1px solid var(--line)}
+    .eyebrow{color:#60726c;margin:0 0 21px}
+    h1,h2,h3{font-family:"Plus Jakarta Sans",sans-serif;letter-spacing:-.045em;margin:0}
+    h1{font-size:clamp(44px,6.5vw,78px);line-height:1.03;max-width:980px}
+    .hero-lead{font-size:clamp(19px,2.2vw,24px);max-width:760px;color:#365356;margin:25px 0 0}
+    .hero-foot{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:31px}
+    .pill{border:1px solid var(--line);border-radius:999px;padding:10px 15px;background:var(--paper);font-size:13px;font-weight:600}
+    .pill b{font-family:"Fragment Mono",monospace;font-size:15px}
+    .pill.highlight{border-color:#e3c96a;background:#fff5cc}
+    .hero-note{max-width:860px;margin:27px 0 0;color:var(--muted);font-size:15px}
+    .section{padding:67px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}
+    .section-head h2{font-size:clamp(32px,4vw,49px);line-height:1.1}
+    .section-head p{color:var(--muted);max-width:650px;margin:12px 0 0;font-size:17px}
+    .count{font-family:"Fragment Mono",monospace;font-size:12px;color:var(--muted);white-space:nowrap}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:27px;min-width:0;display:flex;flex-direction:column}
+    .card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .card-id{font-family:"Fragment Mono",monospace;font-size:12px;color:var(--muted);margin-bottom:9px}
+    .card h3{font-size:26px;line-height:1.13}
+    .location{margin-top:8px;color:var(--muted);font-size:14px}
+    .tag{padding:8px 10px;border-radius:999px;border:1px solid #d7dbc6;background:#eff3e7;letter-spacing:0;white-space:nowrap;color:#315b4e}
+    .tag.check{border-color:#e3c96a;background:#fff5cc;color:#66520f}
+    .thesis{font-size:17px;font-weight:600;line-height:1.45;margin:25px 0 19px;max-width:610px}
+    .evidence{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    .evidence li{display:grid;grid-template-columns:8px 1fr;gap:12px;font-size:14px;color:#405651}
+    .evidence li:before{content:"";width:6px;height:6px;margin-top:8px;background:var(--yellow);border-radius:50%}
+    .verify{border-top:1px solid var(--line);padding-top:17px;margin-top:22px;font-size:14px;color:#52635e}
+    .verify b{color:var(--glacier)}
+    details{margin-top:auto;border-top:1px solid var(--line);padding-top:17px;margin-bottom:0}
+    .verify+details{margin-top:18px}
+    summary{cursor:pointer;font-size:14px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";border:1px solid var(--line);width:28px;height:28px;display:grid;place-items:center;border-radius:50%;font-size:20px;line-height:1}
+    details[open] summary:after{content:"−"}
+    .cv{padding-top:16px;font-size:14px;color:#445853}
+    .cv p{margin:0 0 12px}
+    .cv p:last-child{margin-bottom:0}
+    .cv strong{color:var(--glacier)}
+    .comparison{background:#e8eeea;border-top:1px solid #cfdbd1;border-bottom:1px solid #cfdbd1}
+    .table-wrap{overflow-x:auto;margin-top:24px;border:1px solid #cfd8d1;border-radius:18px;background:var(--paper)}
+    table{border-collapse:collapse;width:100%;min-width:760px}
+    th,td{padding:16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:13px}
+    thead th{background:var(--glacier);color:white;font-family:"Plus Jakarta Sans",sans-serif;font-size:13px}
+    tbody tr:last-child td{border-bottom:0}
+    tbody td:first-child{font-weight:700;white-space:nowrap}
+    .strong{font-weight:700;color:#176b50}
+    .needs{color:#7a5c0f}
+    .next{padding:68px 0 75px}
+    .next-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:start}
+    .next h2{font-size:clamp(32px,4vw,48px)}
+    .next p{font-size:17px;color:#365356;margin:15px 0 0;max-width:590px}
+    .questions{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:25px}
+    .questions ol{padding-left:22px;margin:13px 0 0;color:#405651}
+    .questions li+li{margin-top:10px}
+    .advisor{border-top:1px solid var(--line);padding:55px 0}
+    .advisor-inner{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:24px;max-width:860px}
+    .advisor img{width:110px;height:110px;object-fit:cover;border-radius:22px;border:1px solid var(--line)}
+    .advisor h2{font-size:23px;margin:4px 0 8px}
+    .advisor p{color:#49605a;font-size:14px;margin:0;line-height:1.6}
+    footer{border-top:1px solid var(--line);padding:25px 0 40px;color:var(--muted);font-size:12px}
+    footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:760px){.hero{padding:62px 0 52px}.section{padding:48px 0}.cards,.next-grid{grid-template-columns:1fr}.section-head{align-items:start}.count{display:none}.card{padding:22px}.card h3{font-size:23px}.advisor-inner{grid-template-columns:76px 1fr;gap:16px}.advisor img{width:76px;height:76px;border-radius:15px}}
+    @media(max-width:520px){.shell{width:min(100% - 26px,1160px)}.topbar .shell{min-height:67px}.top-note{display:none}.card-top{flex-wrap:wrap}.tag{font-size:10px}.hero-note{font-size:14px}}
+    @media print{body{background:white}.topbar,.hero,.section,.comparison,.next,.advisor,footer{break-inside:avoid}.card{break-inside:avoid}details .cv{display:block}details:not([open]) .cv{display:block}summary:after{display:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="shell"><a class="brand" href="#top" aria-label="Sagan"><span class="brand-mark" aria-hidden="true"></span>Sagan</a><div class="top-note">Private talent preview · Engineering</div></div></header>
+  <main id="top">
+    <section class="hero"><div class="shell">
+      <p class="eyebrow">Built for a first conversation</p>
+      <h1>Go is one part of the job. Running it outside the cloud is the harder part.</h1>
+      <p class="hero-lead">Here are five engineers and systems builders from our talent pool who could be relevant to your fall expansion. Their backgrounds are different on purpose, so we can agree on the right profile before starting a full search.</p>
+      <div class="hero-foot"><span class="pill highlight"><b>5</b> sample profiles</span><span class="pill">Go + systems experience</span><span class="pill">Names withheld for this preview</span></div>
+      <p class="hero-note">This is a calibration set, not a claim that all five are ready to interview. We have not confirmed current interest, availability, or final technical fit.</p>
+    </div></section>
+
+    <section class="section"><div class="shell">
+      <div class="section-head"><div><p class="eyebrow">The talent</p><h2>Five ways this search could go.</h2><p>Each profile has evidence that matters, plus one question we would settle before putting anyone in front of your team.</p></div><div class="count">01 / 03</div></div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top"><div><div class="card-id">PROFILE 01</div><h3>The hybrid banking engineer</h3><div class="location">Latin America · Senior backend engineer</div></div><span class="tag">Closest match</span></div>
+          <p class="thesis">Has built Go services that ran across cloud and on-premise banking systems, including Linux servers.</p>
+          <ul class="evidence"><li>Worked on transactional services under banking security and reliability constraints.</li><li>Built backend services in Go and other languages for hybrid deployments.</li><li>Has dealt with data from several systems, not a single managed cloud stack.</li></ul>
+          <div class="verify"><b>What we would test:</b> Which Go services did this engineer own end to end?</div>
+          <details><summary>View anonymized CV</summary><div class="cv"><p><strong>Relevant work:</strong> Backend engineering for payments, customer systems, and operational analytics in regulated banking environments.</p><p><strong>Systems:</strong> Go, Linux servers, APIs, databases, and hybrid infrastructure.</p><p><strong>Why it matters:</strong> This is the clearest overlap between production Go and a non-cloud operating environment in this sample.</p></div></details>
+        </article>
+        <article class="card">
+          <div class="card-top"><div><div class="card-id">PROFILE 02</div><h3>The bare-metal platform lead</h3><div class="location">Africa · Senior backend and platform engineer</div></div><span class="tag">Infrastructure depth</span></div>
+          <p class="thesis">Has operated production services on bare-metal virtual machines, not just managed cloud products.</p>
+          <ul class="evidence"><li>Built and ran a production k3s environment on bare-metal VMs.</li><li>Has Linux server administration, deployment, networking, and backend experience.</li><li>Lists Go alongside a broader backend stack.</li></ul>
+          <div class="verify"><b>What we would test:</b> How much recent production code has this engineer written in Go?</div>
+          <details><summary>View anonymized CV</summary><div class="cv"><p><strong>Relevant work:</strong> Backend and platform leadership, with ownership of deployment and production operations.</p><p><strong>Systems:</strong> k3s, bare-metal VMs, Linux, Go, databases, messaging, and CI/CD.</p><p><strong>Why it matters:</strong> Strong evidence for infrastructure ownership; Go depth needs a technical check.</p></div></details>
+        </article>
+        <article class="card">
+          <div class="card-top"><div><div class="card-id">PROFILE 03</div><h3>The self-hosted product builder</h3><div class="location">Latin America · Go product engineer</div></div><span class="tag">Builder profile</span></div>
+          <p class="thesis">Built and sold a working product with a Go backend, then ran self-hosted services and server infrastructure.</p>
+          <ul class="evidence"><li>Built a commercial work-tracking product using Go, PostgreSQL, and a web frontend.</li><li>Provisioned servers and operated self-hosted collaboration and automation tools.</li><li>Has handled capacity changes by separating services across servers.</li></ul>
+          <div class="verify"><b>What we would test:</b> Interest in a dedicated engineering seat and depth with Linux and VPN workflows.</div>
+          <details><summary>View anonymized CV</summary><div class="cv"><p><strong>Relevant work:</strong> End-to-end product build, deployment, and operation, plus business-systems automation.</p><p><strong>Systems:</strong> Go, PostgreSQL, virtual private servers, and self-hosted applications.</p><p><strong>Why it matters:</strong> Good fit if you need someone who can build a product and keep its infrastructure running.</p></div></details>
+        </article>
+        <article class="card">
+          <div class="card-top"><div><div class="card-id">PROFILE 04</div><h3>The enterprise backend specialist</h3><div class="location">Asia · Senior software engineer</div></div><span class="tag check">Validate recency</span></div>
+          <p class="thesis">Brings Go microservices and enterprise deployments that include on-premise and hybrid environments.</p>
+          <ul class="evidence"><li>Reports hands-on Go backend and API work in complex enterprise systems.</li><li>Has worked with infrastructure outside a cloud-only setup.</li><li>Could suit a team that needs a senior backend contributor across several systems.</li></ul>
+          <div class="verify"><b>What we would test:</b> Whether the on-premise work is recent and personally owned.</div>
+          <details><summary>View anonymized CV</summary><div class="cv"><p><strong>Relevant work:</strong> Enterprise backend services, microservices, and on-premise or hybrid deployment work.</p><p><strong>Systems:</strong> Go, APIs, databases, and server infrastructure.</p><p><strong>Why it matters:</strong> The résumé covers both areas of the brief; the exact overlap needs validation.</p></div></details>
+        </article>
+        <article class="card">
+          <div class="card-top"><div><div class="card-id">PROFILE 05</div><h3>The Linux and network operator</h3><div class="location">Asia · Systems engineer</div></div><span class="tag check">Systems-led</span></div>
+          <p class="thesis">Has direct Linux, VPN, firewall, and virtual-machine experience, with Go listed in systems work.</p>
+          <ul class="evidence"><li>Has configured VPNs, security tools, networks, and VMware environments.</li><li>Has supported custom systems, backups, and operational infrastructure.</li><li>Could fit if systems ownership matters as much as application engineering.</li></ul>
+          <div class="verify"><b>What we would test:</b> Whether Go is a production strength or a secondary skill.</div>
+          <details><summary>View anonymized CV</summary><div class="cv"><p><strong>Relevant work:</strong> Systems engineering, network configuration, security tooling, and infrastructure support.</p><p><strong>Systems:</strong> Linux, VPNs, VMware, firewalls, backups, and Go.</p><p><strong>Why it matters:</strong> Strongest direct VPN evidence in this group, but not yet a proven Go-first engineer.</p></div></details>
+        </article>
+      </div>
+    </div></section>
+
+    <section class="section comparison"><div class="shell">
+      <div class="section-head"><div><p class="eyebrow">Side by side</p><h2>Where the evidence sits.</h2><p>This is a guide for the call, not a final score. A short technical screen would resolve the open questions.</p></div><div class="count">02 / 03</div></div>
+      <div class="table-wrap"><table><thead><tr><th>Profile</th><th>Production Go</th><th>Non-cloud systems</th><th>Linux / VPN</th><th>Best reason to meet</th></tr></thead><tbody>
+        <tr><td>01 · Hybrid banking</td><td class="strong">Documented</td><td class="strong">On-premise + hybrid</td><td>Linux documented; VPN unknown</td><td>Closest overlap with the brief</td></tr>
+        <tr><td>02 · Bare-metal lead</td><td class="needs">Go depth to verify</td><td class="strong">Bare-metal VMs</td><td>Linux documented; VPN unknown</td><td>Production infrastructure ownership</td></tr>
+        <tr><td>03 · Product builder</td><td class="strong">Commercial Go product</td><td class="strong">Self-hosted services</td><td class="needs">Depth to verify</td><td>Can build and operate a product</td></tr>
+        <tr><td>04 · Enterprise backend</td><td>Go microservices claimed</td><td>On-premise / hybrid claimed</td><td class="needs">Needs verification</td><td>Senior backend breadth</td></tr>
+        <tr><td>05 · Systems operator</td><td class="needs">Depth to verify</td><td>VMware / custom systems</td><td class="strong">Linux + VPN documented</td><td>Direct network and systems experience</td></tr>
+      </tbody></table></div>
+    </div></section>
+
+    <section class="next"><div class="shell next-grid">
+      <div><p class="eyebrow">The useful next step</p><h2>Tell us which trade-off is acceptable.</h2><p>If Go is the hard requirement, we should favor profiles 01 and 03. If the harder part is keeping non-cloud systems healthy, profile 02 deserves a close look. Your answer will make the next batch much sharper.</p></div>
+      <div class="questions"><div class="small-label">Three questions for the call</div><ol><li>Is Go the primary production language, or one part of a broader engineering stack?</li><li>Does “non-cloud” mean bare-metal or on-premise infrastructure, or development through a VPN into Linux-hosted systems?</li><li>What seniority, working-hours overlap, and monthly budget should the search target?</li></ol></div>
+    </div></section>
+
+    <section class="advisor"><div class="shell advisor-inner"><img src="jesus-pacheco.jpg" alt="Jesus Pacheco" loading="lazy"><div><div class="small-label">Your point of contact</div><h2>Jesus Pacheco · Head of Revenue</h2><p>Jesus leads Revenue at Sagan and personally oversees this search. Outside work, he climbs mountains around the world, usually choosing altitude, cold and thin air, and a questionable amount of uphill walking. Kilimanjaro was one of them, so an uphill hiring challenge is not going to scare him. If you meet him, there is a very good chance he will be drinking mate. At this point, it is less a drink and more part of the meeting setup.</p></div></div></section>
+  </main>
+  <footer><div class="shell"><span>Sagan · An anonymized talent preview</span><span>Profile details are based on candidate records. Interest and fit are not yet confirmed.</span></div></footer>
+</body>
+</html>
